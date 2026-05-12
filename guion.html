@@ -79,7 +79,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   <div class="nav-logo">Alegra <span>×</span> ExO</div>
   <div class="nav-pills">
     <button class="nav-pill" onclick="window.location.href='alegra_exo_presentacion_1.html#s0'">Inicio</button>
-    <button class="nav-pill active" onclick="scrollTo('s7')">Guion</button>
+    <button class="nav-pill active" onclick="scrollToSection('s7')">Guion</button>
   </div>
 </nav>
 
@@ -191,7 +191,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 </section>
 
 <script>
-function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 
 function showScript(key){
   document.querySelectorAll('.script-panel').forEach(p=>p.classList.remove('active'));

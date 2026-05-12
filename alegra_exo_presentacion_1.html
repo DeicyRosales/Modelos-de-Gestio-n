@@ -939,12 +939,12 @@
   <nav>
     <div class="nav-logo">Alegra <span>×</span> ExO</div>
     <div class="nav-pills">
-      <button class="nav-pill active" onclick="scrollTo('s0')">Inicio</button>
-      <button class="nav-pill" onclick="scrollTo('s1')">¿Qué es ExO?</button>
-      <button class="nav-pill" onclick="scrollTo('s2')">Alegra</button>
-      <button class="nav-pill" onclick="scrollTo('s3')">9 Preguntas</button>
-      <button class="nav-pill" onclick="scrollTo('s4')">Diagnóstico</button>
-      <button class="nav-pill" onclick="scrollTo('s5')">Hoja 10x</button>
+      <button class="nav-pill active" onclick="scrollToSection('s0')">Inicio</button>
+      <button class="nav-pill" onclick="scrollToSection('s1')">¿Qué es ExO?</button>
+      <button class="nav-pill" onclick="scrollToSection('s2')">Alegra</button>
+      <button class="nav-pill" onclick="scrollToSection('s3')">9 Preguntas</button>
+      <button class="nav-pill" onclick="scrollToSection('s4')">Diagnóstico</button>
+      <button class="nav-pill" onclick="scrollToSection('s5')">Hoja 10x</button>
       <button class="nav-pill" onclick="window.location.href='guion.html'">Guion</button>
     </div>
   </nav>
@@ -1454,7 +1454,7 @@
   </section>
 
   <script>
-    function scrollTo(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }) }
+    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }) }
 
     function toggleQ(card) {
       const wasOpen = card.classList.contains('open');
