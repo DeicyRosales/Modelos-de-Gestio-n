@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guion - Alegra × ExO</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+/* ── BASE ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --surface:#12121a;
+  --card:#1a1a26;
+  --accent:#7c5cfc;
+  --accent2:#00d4aa;
+  --accent3:#ff6b6b;
+  --gold:#f5c842;
+  --text:#f0eeff;
+  --muted:#8884a8;
+  --border:rgba(124,92,252,0.2);
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;cursor:default}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-head);font-weight:800;font-size:18px;letter-spacing:-.02em}
+.nav-logo span{color:var(--accent)}
+.nav-pills{display:flex;gap:6px}
+.nav-pill{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-body);font-size:12px;padding:5px 14px;border-radius:20px;cursor:pointer;transition:all .25s}
+.nav-pill:hover,.nav-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ── SLIDES ── */
+.slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.slide-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.slide-title{font-family:var(--font-head);font-size:clamp(32px,4.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:32px;max-width:680px}
+.slide-title em{color:var(--accent2);font-style:normal}
+
+/* ── GUION SLIDE ── */
+#s7{background:var(--surface)}
+.script-layout{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-top:8px}
+.script-nav{display:flex;flex-direction:column;gap:8px}
+.script-btn{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;cursor:pointer;text-align:left;transition:all .2s;font-family:var(--font-body)}
+.script-btn:hover,.script-btn.active{border-color:var(--accent);background:rgba(124,92,252,.1)}
+.script-btn .sb-num{font-family:var(--font-head);font-size:11px;color:var(--accent);font-weight:700;display:block;margin-bottom:3px}
+.script-btn .sb-title{font-size:13px;color:var(--text)}
+.script-btn .sb-time{font-size:11px;color:var(--muted);margin-top:3px}
+.script-panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;display:none}
+.script-panel.active{display:block}
+.sp-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sp-title{font-family:var(--font-head);font-size:20px;font-weight:700}
+.sp-time{font-size:12px;color:var(--muted);background:rgba(124,92,252,.12);padding:4px 12px;border-radius:20px}
+.sp-speaker{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;margin-top:16px}
+.sp-speaker:first-of-type{margin-top:0}
+.sp-text{font-size:14px;line-height:1.75;color:var(--text)}
+.sp-note{font-size:12px;color:var(--gold);margin-top:10px;padding:8px 12px;background:rgba(245,200,66,.06);border-radius:8px;border-left:2px solid var(--gold)}
+
+/* ── ANIMATIONS ── */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* ── PROGRESS ── */
+.progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:200;transition:width .1s}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="nav-logo">Alegra <span>×</span> ExO</div>
+  <div class="nav-pills">
+    <button class="nav-pill" onclick="window.location.href='alegra_exo_presentacion_1.html#s0'">Inicio</button>
+    <button class="nav-pill active" onclick="scrollTo('s7')">Guion</button>
+  </div>
+</nav>
+
+<!-- ── SLIDE 7 — GUION ── -->
+<section class="slide" id="s7">
+  <div class="slide-label">Paso 4 — Entregable</div>
+  <h2 class="slide-title">Guion del <em>Podcast</em><br>(≤10 minutos)</h2>
+  <div class="script-layout fade-in">
+    <div class="script-nav">
+      <button class="script-btn active" onclick="showScript('intro')">
+        <span class="sb-num">SEGMENTO 01</span>
+        <span class="sb-title">Apertura e introducción</span>
+        <span class="sb-time">0:00 – 1:30</span>
+      </button>
+      <button class="script-btn" onclick="showScript('que')">
+        <span class="sb-num">SEGMENTO 02</span>
+        <span class="sb-title">¿Qué es una ExO?</span>
+        <span class="sb-time">1:30 – 3:00</span>
+      </button>
+      <button class="script-btn" onclick="showScript('alegra')">
+        <span class="sb-num">SEGMENTO 03</span>
+        <span class="sb-title">Alegra: quiénes son</span>
+        <span class="sb-time">3:00 – 4:30</span>
+      </button>
+      <button class="script-btn" onclick="showScript('eval')">
+        <span class="sb-num">SEGMENTO 04</span>
+        <span class="sb-title">Las 9 preguntas</span>
+        <span class="sb-time">4:30 – 7:30</span>
+      </button>
+      <button class="script-btn" onclick="showScript('veredicto')">
+        <span class="sb-num">SEGMENTO 05</span>
+        <span class="sb-title">Veredicto y cierre</span>
+        <span class="sb-time">7:30 – 10:00</span>
+      </button>
+    </div>
+
+    <div>
+      <div class="script-panel active" id="sp-intro">
+        <div class="sp-header">
+          <span class="sp-title">Apertura e introducción</span>
+          <span class="sp-time">0:00 – 1:30 min</span>
+        </div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">¿Alguna vez se han preguntado por qué algunas empresas crecen diez veces más rápido que sus competidoras, sin diez veces más empleados ni diez veces más dinero? Ese fenómeno tiene nombre: se llama organización exponencial. Y hoy vamos a preguntarnos si una pyme colombiana, nacida en Medellín, tiene lo que se necesita para convertirse en una.</div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Bienvenidos a este episodio. Soy [Nombre B] y junto a [Nombre A] vamos a analizar a fondo a Alegra — un software de gestión empresarial que hoy tiene presencia en 14 países y más de 476.000 empresas registradas. La pregunta que nos vamos a responder hoy: ¿puede Alegra convertirse en una organización exponencial?</div>
+        <div class="sp-note">🎙 Tip: Pueden agregar una música de fondo suave al inicio, de 5-8 segundos, antes de comenzar a hablar. Genera ambiente de podcast profesional.</div>
+      </div>
+
+      <div class="script-panel" id="sp-que">
+        <div class="sp-header">
+          <span class="sp-title">¿Qué es una Organización Exponencial?</span>
+          <span class="sp-time">1:30 – 3:00 min</span>
+        </div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Antes de hablar de Alegra, necesitamos establecer el marco. Salim Ismail, en su libro "Exponential Organizations" de 2014, define a una ExO como aquella cuyo impacto es desproporcionalmente grande en comparación con sus pares, gracias al uso de nuevas técnicas organizacionales que aprovechan tecnologías aceleradas. En concreto: crecen 10 veces más sin 10 veces más costos.</div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Y esto lo logran a través de 11 atributos. El primero y más importante es el MTP: un Propósito Transformador Masivo. Una aspiración audaz que va mucho más allá del negocio. Y luego están 5 palancas externas — SCALE — y 5 internas — IDEAS. Las externas: Staff on demand, Community, Algorithms, Leveraged assets y Engagement. Las internas: Interfaces, Dashboards, Experimentation, Autonomy y Social technologies.</div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Una empresa no necesita los 10. Pero sí necesita un MTP fuerte y al menos 4 de cada grupo para comenzar la transición hacia lo exponencial. Eso es lo que vamos a evaluar en Alegra.</div>
+        <div class="sp-note">🎙 Tip: Este segmento puede apoyarse mostrando en pantalla la diapositiva con los 10 atributos SCALE + IDEAS si es un video.</div>
+      </div>
+
+      <div class="script-panel" id="sp-alegra">
+        <div class="sp-header">
+          <span class="sp-title">Alegra: quiénes son y qué hacen</span>
+          <span class="sp-time">3:00 – 4:30 min</span>
+        </div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Alegra fue fundada en 2012 en Medellín por Santiago Villegas y Jorge Soto. Su propuesta: ser un ecosistema en la nube para que las pymes colombianas gestionen su contabilidad, facturación electrónica, nómina y punto de venta, todo desde un mismo lugar. Hoy opera en 14 países — desde México hasta Nigeria — con una tasa de crecimiento anual que ha superado el 80% de forma consistente. Eso ya es una señal.</div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Su MTP podríamos definirlo así: simplificar radicalmente la gestión administrativa de millones de pequeñas empresas latinoamericanas. Y eso no es un slogan — lo respaldan con planes desde $69.900 pesos colombianos al mes, habilitación ante la DIAN en 10 minutos, y más de 40 integraciones con plataformas como Shopify y MercadoLibre. Son datos verificados en sus propias fuentes y en análisis independientes de programascontabilidad.com.</div>
+        <div class="sp-note">🎙 Tip: Mencionen explícitamente las fuentes durante el audio — esto demuestra rigor académico.</div>
+      </div>
+
+      <div class="script-panel" id="sp-eval">
+        <div class="sp-header">
+          <span class="sp-title">Evaluación: las 9 preguntas clave</span>
+          <span class="sp-time">4:30 – 7:30 min</span>
+        </div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Ahora vamos con las 9 preguntas del análisis. Les damos nuestro veredicto en cada una. Uno: ¿está transformando el mercado? Sí, rotundamente. Desplazó el software contable complejo por un ecosistema accesible para pymes. 476.000 empresas registradas no mienten.</div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Dos: ¿involucra actores externos? Parcialmente. Los contadores tienen usuarios gratuitos en los planes, hay un marketplace de integraciones, pero aún falta una comunidad activa y co-creadora. Tres: ¿ejecuta procesos digitalmente? Totalmente. Todo es nativo cloud, incluyendo soporte 24/7, actualizaciones normativas automáticas y facturación por WhatsApp y voz.</div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Cuatro: ¿usa inteligencia artificial? Sí, y de forma transversal. No como un módulo separado — está embebida en asientos contables automáticos, conciliación bancaria, reportes predictivos y sincronización con la DIAN. Cinco: ¿cómo es su modelo de negocio digital? SaaS puro, sin costos de instalación, sin permanencia, escalable a 14 países con el mismo motor tecnológico.</div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Seis: ¿puede crecer sin inflar costos? Esta es la pregunta ExO por excelencia. Y la respuesta es sí. Cada cliente adicional tiene costo marginal casi cero. Actualizan normas una sola vez para todos los clientes. Eso es crecimiento asimétrico. Siete: ¿monitorea en tiempo real? Sí — tableros en vivo, conciliación continua y alertas proactivas de cumplimiento. Ocho: ¿experimenta con frecuencia? En 2024 lanzaron cinco funcionalidades nuevas importantes. Su blog de novedades es evidencia de iteración constante. Nueve: ¿promueve decisiones compartidas? Parcialmente — a nivel de producto sí, con multi-usuario y roles. Internamente, hay cultura declarada de inclusión, pero no evidencia de squads completamente autónomos.</div>
+        <div class="sp-note">🎙 Tip: Pueden repartirse las preguntas 1-5 entre un integrante y 6-9 entre el otro para mayor dinamismo. Si son tres integrantes, el tercero puede hacer de "moderador" que resume.</div>
+      </div>
+
+      <div class="script-panel" id="sp-veredicto">
+        <div class="sp-header">
+          <span class="sp-title">Veredicto y cierre</span>
+          <span class="sp-time">7:30 – 10:00 min</span>
+        </div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Entonces, ¿tiene Alegra potencial de convertirse en una organización exponencial? Nuestra respuesta es sí — pero con trabajo pendiente. Cumple 5 de los 10 atributos ExO de forma sólida: Algorithms, Leveraged assets, Interfaces, Dashboards y Experimentation. Tiene 3 en desarrollo y 2 brechas claras: Engagement y Autonomy interna.</div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Las tres palancas que creemos que pueden llevarla a un crecimiento 10x sin multiplicar sus costos son: primero, activar una comunidad certificada de contadores que actúe como fuerza de ventas y co-creadora. Segundo, monetizar sus datos de 476.000 empresas como benchmarks sectoriales — un producto nuevo, con costo marginal cero. Y tercero, integrar servicios financieros embebidos: Alegra ya sabe más del negocio de sus clientes que cualquier banco.</div>
+        <div class="sp-speaker">PRESENTADOR/A A</div>
+        <div class="sp-text">Alegra demuestra que el modelo exponencial no es exclusivo de Silicon Valley ni de empresas con millones de dólares de inversión. Una pyme colombiana, con el modelo de negocio correcto, tecnología bien aplicada y una comunidad que activar, tiene todos los ingredientes para crecer de forma exponencial. La pregunta no es si puede — es cuándo y cómo.</div>
+        <div class="sp-speaker">PRESENTADOR/A B</div>
+        <div class="sp-text">Gracias por escucharnos. Si quieren explorar más sobre organizaciones exponenciales, les recomendamos el libro "Exponential Organizations" de Salim Ismail. Toda la información que usamos en este episodio está respaldada en fuentes oficiales de Alegra y análisis independientes verificados, que pueden consultar en las notas. ¡Hasta la próxima!</div>
+        <div class="sp-note">🎙 Tip final: Pueden grabar un "bloopers reel" al final del video para humanizar el contenido. Los mejores podcasts mezclan rigor con personalidad.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+function showScript(key){
+  document.querySelectorAll('.script-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.script-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sp-'+key).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=(window.scrollY/(h.scrollHeight-h.clientHeight))*100;
+  document.getElementById('progress').style.width=pct+'%';
+});
+
+// Intersection observer for fade-in
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
