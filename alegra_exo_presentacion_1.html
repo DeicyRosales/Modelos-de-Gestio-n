@@ -1,568 +1,1492 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alegra × ExO — ¿Puede una pyme volverse exponencial?</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0a0f;
-  --surface:#12121a;
-  --card:#1a1a26;
-  --accent:#7c5cfc;
-  --accent2:#00d4aa;
-  --accent3:#ff6b6b;
-  --gold:#f5c842;
-  --text:#f0eeff;
-  --muted:#8884a8;
-  --border:rgba(124,92,252,0.2);
-  --font-head:'Syne',sans-serif;
-  --font-body:'DM Sans',sans-serif;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;cursor:default}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alegra × ExO — ¿Puede una pyme volverse exponencial?</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--font-head);font-weight:800;font-size:18px;letter-spacing:-.02em}
-.nav-logo span{color:var(--accent)}
-.nav-pills{display:flex;gap:6px}
-.nav-pill{background:none;border:1px solid var(--border);color:var(--muted);font-family:var(--font-body);font-size:12px;padding:5px 14px;border-radius:20px;cursor:pointer;transition:all .25s}
-.nav-pill:hover,.nav-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --card: #1a1a26;
+      --accent: #7c5cfc;
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --gold: #f5c842;
+      --text: #f0eeff;
+      --muted: #8884a8;
+      --border: rgba(124, 92, 252, 0.2);
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
 
-/* ── SLIDES ── */
-.slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden}
-.slide+.slide{border-top:1px solid var(--border)}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* ── SLIDE 0 — PORTADA ── */
-#s0{background:var(--bg);align-items:center;text-align:center}
-.hero-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);background:rgba(124,92,252,.12);border:1px solid rgba(124,92,252,.3);border-radius:20px;padding:5px 16px;margin-bottom:28px;animation:fadeUp .6s ease both}
-.hero-title{font-family:var(--font-head);font-size:clamp(44px,7vw,88px);font-weight:800;line-height:.96;letter-spacing:-.04em;animation:fadeUp .6s .1s ease both}
-.hero-title .line2{color:var(--accent)}
-.hero-title .line3{-webkit-text-stroke:1.5px var(--accent);color:transparent}
-.hero-sub{margin-top:28px;font-size:18px;color:var(--muted);max-width:540px;line-height:1.6;animation:fadeUp .6s .2s ease both}
-.hero-meta{margin-top:40px;display:flex;gap:32px;justify-content:center;animation:fadeUp .6s .3s ease both}
-.meta-item{text-align:center}
-.meta-num{font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--accent2)}
-.meta-label{font-size:12px;color:var(--muted);margin-top:2px}
-.bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;opacity:.4;pointer-events:none}
-.bg-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-.orb1{width:400px;height:400px;background:rgba(124,92,252,.15);top:-100px;right:-100px}
-.orb2{width:300px;height:300px;background:rgba(0,212,170,.1);bottom:-50px;left:-80px}
-.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.scroll-hint::after{content:'';display:block;width:1px;height:40px;background:linear-gradient(var(--muted),transparent)}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      cursor: default
+    }
 
-/* ── SLIDE 1 — QUÉ ES ExO ── */
-#s1{background:var(--surface)}
-.slide-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.slide-title{font-family:var(--font-head);font-size:clamp(32px,4.5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:32px;max-width:680px}
-.slide-title em{color:var(--accent2);font-style:normal}
-.exo-def{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-bottom:32px;position:relative;overflow:hidden}
-.exo-def::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--accent),var(--accent2))}
-.exo-def p{font-size:17px;line-height:1.7;color:var(--text)}
-.exo-def cite{display:block;margin-top:10px;font-size:12px;color:var(--muted);font-style:normal}
-.mtp-box{background:linear-gradient(135deg,rgba(124,92,252,.15),rgba(0,212,170,.08));border:1px solid var(--accent);border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:16px;margin-bottom:32px}
-.mtp-badge{font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--accent);min-width:80px}
-.mtp-text strong{display:block;font-size:14px;font-weight:500;margin-bottom:4px}
-.mtp-text span{font-size:13px;color:var(--muted)}
-.attrs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.attr-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color .2s,transform .2s}
-.attr-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-.attr-letter{font-family:var(--font-head);font-size:28px;font-weight:800;line-height:1}
-.attr-letter.s{color:var(--accent)}
-.attr-letter.i{color:var(--accent2)}
-.attr-name{font-size:12px;font-weight:500;margin-top:4px;margin-bottom:2px}
-.attr-desc{font-size:11px;color:var(--muted);line-height:1.4}
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border)
+    }
 
-/* ── SLIDE 2 — ALEGRA EN NÚMEROS ── */
-#s2{background:var(--bg)}
-.numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
-.num-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;transition:border-color .3s}
-.num-card:hover{border-color:var(--accent2)}
-.num-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
-.num-card.c1::after{background:var(--accent)}
-.num-card.c2::after{background:var(--accent2)}
-.num-card.c3::after{background:var(--gold)}
-.num-card.c4::after{background:var(--accent3)}
-.num-card.c5::after{background:var(--accent)}
-.num-card.c6::after{background:var(--accent2)}
-.num-big{font-family:var(--font-head);font-size:48px;font-weight:800;line-height:1;margin-bottom:8px}
-.num-card.c1 .num-big{color:var(--accent)}
-.num-card.c2 .num-big{color:var(--accent2)}
-.num-card.c3 .num-big{color:var(--gold)}
-.num-card.c4 .num-big{color:var(--accent3)}
-.num-card.c5 .num-big{color:var(--accent)}
-.num-card.c6 .num-big{color:var(--accent2)}
-.num-label{font-size:13px;color:var(--muted);line-height:1.4}
-.num-source{font-size:10px;color:rgba(136,132,168,.5);margin-top:8px}
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -.02em
+    }
 
-/* ── SLIDE 3 — 9 PREGUNTAS ── */
-#s3{background:var(--surface)}
-.questions-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
-.q-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;gap:14px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
-.q-card:hover,.q-card.open{border-color:var(--accent);background:rgba(124,92,252,.08)}
-.q-card.open .q-answer{display:block}
-.q-card.open .q-chevron{transform:rotate(180deg)}
-.q-num{font-family:var(--font-head);font-size:32px;font-weight:800;color:var(--border);line-height:1;min-width:40px;transition:color .25s}
-.q-card:hover .q-num,.q-card.open .q-num{color:var(--accent)}
-.q-body{flex:1}
-.q-title{font-size:13px;font-weight:500;line-height:1.4;margin-bottom:0}
-.q-answer{display:none;margin-top:10px;font-size:12px;color:var(--muted);line-height:1.6;padding-top:10px;border-top:1px solid var(--border)}
-.q-chevron{position:absolute;top:16px;right:16px;color:var(--muted);font-size:14px;transition:transform .25s}
-.verdict{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:500;padding:3px 10px;border-radius:20px;margin-top:8px}
-.v-yes{background:rgba(0,212,170,.15);color:var(--accent2)}
-.v-partial{background:rgba(245,200,66,.12);color:var(--gold)}
-.v-gap{background:rgba(255,107,107,.12);color:var(--accent3)}
+    .nav-logo span {
+      color: var(--accent)
+    }
 
-/* ── SLIDE 4 — DIAGNÓSTICO ExO ── */
-#s4{background:var(--bg)}
-.diag-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
-.scale-block,.ideas-block{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
-.block-title{font-family:var(--font-head);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
-.scale-block .block-title{color:var(--accent)}
-.ideas-block .block-title{color:var(--accent2)}
-.attr-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.attr-row:last-child{border-bottom:none}
-.attr-tag{font-family:var(--font-head);font-size:11px;font-weight:700;width:28px;text-align:center}
-.scale-block .attr-tag{color:var(--accent)}
-.ideas-block .attr-tag{color:var(--accent2)}
-.attr-info{flex:1}
-.attr-info strong{display:block;font-size:12px;font-weight:500}
-.attr-info span{font-size:11px;color:var(--muted)}
-.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.dot-yes{background:var(--accent2)}
-.dot-partial{background:var(--gold)}
-.dot-no{background:var(--accent3)}
-.verdict-box{margin-top:20px;background:linear-gradient(135deg,rgba(124,92,252,.15),rgba(0,212,170,.08));border:1px solid var(--accent);border-radius:14px;padding:20px 24px;grid-column:1/-1}
-.verdict-title{font-family:var(--font-head);font-size:22px;font-weight:800;margin-bottom:8px}
-.verdict-title span{color:var(--accent2)}
-.verdict-sub{font-size:14px;color:var(--muted);line-height:1.6}
+    .nav-pills {
+      display: flex;
+      gap: 6px
+    }
 
-/* ── SLIDE 5 — HOJA DE RUTA 10x ── */
-#s5{background:var(--surface)}
-.roadmap{margin-top:8px;display:flex;flex-direction:column;gap:14px}
-.road-item{display:flex;gap:20px;align-items:flex-start}
-.road-num{font-family:var(--font-head);font-size:48px;font-weight:800;color:var(--border);line-height:1;min-width:64px;text-align:right;transition:color .3s}
-.road-card{flex:1;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;transition:all .25s;cursor:default}
-.road-card:hover{border-color:var(--accent)}
-.road-item:hover .road-num{color:var(--accent)}
-.road-tag{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-.road-title{font-size:15px;font-weight:500;margin-bottom:4px}
-.road-desc{font-size:12px;color:var(--muted);line-height:1.5}
-.road-ref{font-size:10px;color:rgba(136,132,168,.5);margin-top:6px}
-.impact-pill{display:inline-block;font-size:10px;padding:2px 10px;border-radius:10px;margin-top:8px;font-weight:500}
-.imp-high{background:rgba(0,212,170,.12);color:var(--accent2)}
-.imp-med{background:rgba(124,92,252,.12);color:var(--accent)}
+    .nav-pill {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all .25s
+    }
 
-/* ── SLIDE 6 — FUENTES ── */
-#s6{background:var(--bg)}
-.sources-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
-.source-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;gap:10px;align-items:flex-start}
-.source-dot{width:6px;height:6px;border-radius:50%;margin-top:6px;flex-shrink:0}
-.source-dot.oficial{background:var(--accent2)}
-.source-dot.tercero{background:var(--accent3)}
-.source-info strong{display:block;font-size:12px;font-weight:500;margin-bottom:2px}
-.source-info span{font-size:11px;color:var(--muted)}
-.legend{display:flex;gap:16px;margin-bottom:16px}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
-.leg-dot{width:8px;height:8px;border-radius:50%}
+    .nav-pill:hover,
+    .nav-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff
+    }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-.fade-in.visible{opacity:1;transform:none}
+    /* ── SLIDES ── */
+    .slide {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden
+    }
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+    .slide+.slide {
+      border-top: 1px solid var(--border)
+    }
 
-/* ── PROGRESS ── */
-.progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:200;transition:width .1s}
-</style>
+    /* ── SLIDE 0 — PORTADA ── */
+    #s0 {
+      background: var(--bg);
+      align-items: center;
+      text-align: center
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(124, 92, 252, .12);
+      border: 1px solid rgba(124, 92, 252, .3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      margin-bottom: 28px;
+      animation: fadeUp .6s ease both
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(44px, 7vw, 88px);
+      font-weight: 800;
+      line-height: .96;
+      letter-spacing: -.04em;
+      animation: fadeUp .6s .1s ease both
+    }
+
+    .hero-title .line2 {
+      color: var(--accent)
+    }
+
+    .hero-title .line3 {
+      -webkit-text-stroke: 1.5px var(--accent);
+      color: transparent
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.6;
+      animation: fadeUp .6s .2s ease both
+    }
+
+    .hero-meta {
+      margin-top: 40px;
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      animation: fadeUp .6s .3s ease both
+    }
+
+    .meta-item {
+      text-align: center
+    }
+
+    .meta-num {
+      font-family: var(--font-head);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent2)
+    }
+
+    .meta-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: .4;
+      pointer-events: none
+    }
+
+    .bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none
+    }
+
+    .orb1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(124, 92, 252, .15);
+      top: -100px;
+      right: -100px
+    }
+
+    .orb2 {
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 212, 170, .1);
+      bottom: -50px;
+      left: -80px
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--muted), transparent)
+    }
+
+    /* ── SLIDE 1 — QUÉ ES ExO ── */
+    #s1 {
+      background: var(--surface)
+    }
+
+    .slide-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px
+    }
+
+    .slide-title {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin-bottom: 32px;
+      max-width: 680px
+    }
+
+    .slide-title em {
+      color: var(--accent2);
+      font-style: normal
+    }
+
+    .exo-def {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .exo-def::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(var(--accent), var(--accent2))
+    }
+
+    .exo-def p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text)
+    }
+
+    .exo-def cite {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      font-style: normal
+    }
+
+    .mtp-box {
+      background: linear-gradient(135deg, rgba(124, 92, 252, .15), rgba(0, 212, 170, .08));
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px
+    }
+
+    .mtp-badge {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      min-width: 80px
+    }
+
+    .mtp-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .mtp-text span {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .attrs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px
+    }
+
+    .attr-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: border-color .2s, transform .2s
+    }
+
+    .attr-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px)
+    }
+
+    .attr-letter {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1
+    }
+
+    .attr-letter.s {
+      color: var(--accent)
+    }
+
+    .attr-letter.i {
+      color: var(--accent2)
+    }
+
+    .attr-name {
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 4px;
+      margin-bottom: 2px
+    }
+
+    .attr-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4
+    }
+
+    /* ── SLIDE 2 — ALEGRA EN NÚMEROS ── */
+    #s2 {
+      background: var(--bg)
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 8px
+    }
+
+    .num-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s
+    }
+
+    .num-card:hover {
+      border-color: var(--accent2)
+    }
+
+    .num-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px
+    }
+
+    .num-card.c1::after {
+      background: var(--accent)
+    }
+
+    .num-card.c2::after {
+      background: var(--accent2)
+    }
+
+    .num-card.c3::after {
+      background: var(--gold)
+    }
+
+    .num-card.c4::after {
+      background: var(--accent3)
+    }
+
+    .num-card.c5::after {
+      background: var(--accent)
+    }
+
+    .num-card.c6::after {
+      background: var(--accent2)
+    }
+
+    .num-big {
+      font-family: var(--font-head);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px
+    }
+
+    .num-card.c1 .num-big {
+      color: var(--accent)
+    }
+
+    .num-card.c2 .num-big {
+      color: var(--accent2)
+    }
+
+    .num-card.c3 .num-big {
+      color: var(--gold)
+    }
+
+    .num-card.c4 .num-big {
+      color: var(--accent3)
+    }
+
+    .num-card.c5 .num-big {
+      color: var(--accent)
+    }
+
+    .num-card.c6 .num-big {
+      color: var(--accent2)
+    }
+
+    .num-label {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4
+    }
+
+    .num-source {
+      font-size: 10px;
+      color: rgba(136, 132, 168, .5);
+      margin-top: 8px
+    }
+
+    /* ── SLIDE 3 — 9 PREGUNTAS ── */
+    #s3 {
+      background: var(--surface)
+    }
+
+    .questions-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px
+    }
+
+    .q-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      cursor: pointer;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .q-card:hover,
+    .q-card.open {
+      border-color: var(--accent);
+      background: rgba(124, 92, 252, .08)
+    }
+
+    .q-card.open .q-answer {
+      display: block
+    }
+
+    .q-card.open .q-chevron {
+      transform: rotate(180deg)
+    }
+
+    .q-num {
+      font-family: var(--font-head);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      min-width: 40px;
+      transition: color .25s
+    }
+
+    .q-card:hover .q-num,
+    .q-card.open .q-num {
+      color: var(--accent)
+    }
+
+    .q-body {
+      flex: 1
+    }
+
+    .q-title {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 0
+    }
+
+    .q-answer {
+      display: none;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-top: 10px;
+      border-top: 1px solid var(--border)
+    }
+
+    .q-chevron {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: transform .25s
+    }
+
+    .verdict {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 8px
+    }
+
+    .v-yes {
+      background: rgba(0, 212, 170, .15);
+      color: var(--accent2)
+    }
+
+    .v-partial {
+      background: rgba(245, 200, 66, .12);
+      color: var(--gold)
+    }
+
+    .v-gap {
+      background: rgba(255, 107, 107, .12);
+      color: var(--accent3)
+    }
+
+    /* ── SLIDE 4 — DIAGNÓSTICO ExO ── */
+    #s4 {
+      background: var(--bg)
+    }
+
+    .diag-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 8px
+    }
+
+    .scale-block,
+    .ideas-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px
+    }
+
+    .block-title {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px
+    }
+
+    .scale-block .block-title {
+      color: var(--accent)
+    }
+
+    .ideas-block .block-title {
+      color: var(--accent2)
+    }
+
+    .attr-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .04)
+    }
+
+    .attr-row:last-child {
+      border-bottom: none
+    }
+
+    .attr-tag {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      width: 28px;
+      text-align: center
+    }
+
+    .scale-block .attr-tag {
+      color: var(--accent)
+    }
+
+    .ideas-block .attr-tag {
+      color: var(--accent2)
+    }
+
+    .attr-info {
+      flex: 1
+    }
+
+    .attr-info strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 500
+    }
+
+    .attr-info span {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0
+    }
+
+    .dot-yes {
+      background: var(--accent2)
+    }
+
+    .dot-partial {
+      background: var(--gold)
+    }
+
+    .dot-no {
+      background: var(--accent3)
+    }
+
+    .verdict-box {
+      margin-top: 20px;
+      background: linear-gradient(135deg, rgba(124, 92, 252, .15), rgba(0, 212, 170, .08));
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 20px 24px;
+      grid-column: 1/-1
+    }
+
+    .verdict-title {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px
+    }
+
+    .verdict-title span {
+      color: var(--accent2)
+    }
+
+    .verdict-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6
+    }
+
+    /* ── SLIDE 5 — HOJA DE RUTA 10x ── */
+    #s5 {
+      background: var(--surface)
+    }
+
+    .roadmap {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .road-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start
+    }
+
+    .road-num {
+      font-family: var(--font-head);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      min-width: 64px;
+      text-align: right;
+      transition: color .3s
+    }
+
+    .road-card {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      transition: all .25s;
+      cursor: default
+    }
+
+    .road-card:hover {
+      border-color: var(--accent)
+    }
+
+    .road-item:hover .road-num {
+      color: var(--accent)
+    }
+
+    .road-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px
+    }
+
+    .road-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px
+    }
+
+    .road-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5
+    }
+
+    .road-ref {
+      font-size: 10px;
+      color: rgba(136, 132, 168, .5);
+      margin-top: 6px
+    }
+
+    .impact-pill {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      margin-top: 8px;
+      font-weight: 500
+    }
+
+    .imp-high {
+      background: rgba(0, 212, 170, .12);
+      color: var(--accent2)
+    }
+
+    .imp-med {
+      background: rgba(124, 92, 252, .12);
+      color: var(--accent)
+    }
+
+    /* ── SLIDE 6 — FUENTES ── */
+    #s6 {
+      background: var(--bg)
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px
+    }
+
+    .source-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    .source-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0
+    }
+
+    .source-dot.oficial {
+      background: var(--accent2)
+    }
+
+    .source-dot.tercero {
+      background: var(--accent3)
+    }
+
+    .source-info strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 2px
+    }
+
+    .source-info span {
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px
+    }
+
+    .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .leg-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar {
+      width: 4px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 2px
+    }
+
+    /* ── PROGRESS ── */
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 200;
+      transition: width .1s
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="progress" id="progress"></div>
+  <div class="progress" id="progress"></div>
 
-<nav>
-  <div class="nav-logo">Alegra <span>×</span> ExO</div>
-  <div class="nav-pills">
-    <button class="nav-pill active" onclick="scrollTo('s0')">Inicio</button>
-    <button class="nav-pill" onclick="scrollTo('s1')">¿Qué es ExO?</button>
-    <button class="nav-pill" onclick="scrollTo('s2')">Alegra</button>
-    <button class="nav-pill" onclick="scrollTo('s3')">9 Preguntas</button>
-    <button class="nav-pill" onclick="scrollTo('s4')">Diagnóstico</button>
-    <button class="nav-pill" onclick="scrollTo('s5')">Hoja 10x</button>
-    <button class="nav-pill" onclick="window.location.href='guion.html'">Guion</button>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-logo">Alegra <span>×</span> ExO</div>
+    <div class="nav-pills">
+      <button class="nav-pill active" onclick="scrollTo('s0')">Inicio</button>
+      <button class="nav-pill" onclick="scrollTo('s1')">¿Qué es ExO?</button>
+      <button class="nav-pill" onclick="scrollTo('s2')">Alegra</button>
+      <button class="nav-pill" onclick="scrollTo('s3')">9 Preguntas</button>
+      <button class="nav-pill" onclick="scrollTo('s4')">Diagnóstico</button>
+      <button class="nav-pill" onclick="scrollTo('s5')">Hoja 10x</button>
+      <button class="nav-pill" onclick="window.location.href='guion.html'">Guion</button>
+    </div>
+  </nav>
 
-<!-- ── SLIDE 0 ── -->
-<section class="slide" id="s0">
-  <div class="bg-grid"></div>
-  <div class="bg-orb orb1"></div>
-  <div class="bg-orb orb2"></div>
-  <div class="hero-tag">Podcast · Gestión Organizacional · 2025</div>
-  <h1 class="hero-title">
-    ¿Puede una pyme<br>
-    <span class="line2">colombiana</span><br>
-    <span class="line3">ser exponencial?</span>
-  </h1>
-  <p class="hero-sub">Un análisis profundo de Alegra bajo el marco ExO de Salim Ismail — con 9 preguntas clave y una propuesta de transformación 10x.</p>
-  <div class="hero-meta">
-    <div class="meta-item"><div class="meta-num">476k+</div><div class="meta-label">empresas usuarias</div></div>
-    <div class="meta-item"><div class="meta-num">14</div><div class="meta-label">países presentes</div></div>
-    <div class="meta-item"><div class="meta-num">+80%</div><div class="meta-label">crecimiento anual</div></div>
-    <div class="meta-item"><div class="meta-num">2012</div><div class="meta-label">fundada en Medellín</div></div>
-  </div>
-  <div class="scroll-hint">desplazar</div>
-</section>
+  <!-- ── SLIDE 0 ── -->
+  <section class="slide" id="s0">
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="hero-tag">Podcast · Gestión Organizacional · 2026</div>
+    <h1 class="hero-title">
+      ¿Puede una pyme<br>
+      <span class="line2">colombiana</span><br>
+      <span class="line3">ser exponencial?</span>
+    </h1>
+    <p class="hero-sub">Un análisis profundo de Alegra bajo el marco ExO de Salim Ismail — con 9 preguntas clave y una
+      propuesta de transformación 10x.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-num">476k+</div>
+        <div class="meta-label">empresas usuarias</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-num">14</div>
+        <div class="meta-label">países presentes</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-num">+80%</div>
+        <div class="meta-label">crecimiento anual</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-num">2012</div>
+        <div class="meta-label">fundada en Medellín</div>
+      </div>
+    </div>
+    <div class="scroll-hint">desplazar</div>
+  </section>
 
-<!-- ── SLIDE 1 ── -->
-<section class="slide" id="s1">
-  <div class="slide-label">Paso 1 — Marco conceptual</div>
-  <h2 class="slide-title">¿Qué es una <em>Organización Exponencial</em>?</h2>
-  <div class="exo-def fade-in">
-    <p>Una <strong>Organización Exponencial (ExO)</strong> es aquella cuyo impacto — o resultado — es desproporcionadamente grande en comparación con sus pares, gracias al uso de nuevas técnicas organizacionales que aprovechan tecnologías aceleradas. Su crecimiento supera en <strong>10 veces o más</strong> al de organizaciones similares.</p>
-    <cite>— Salim Ismail, "Exponential Organizations" (2014)</cite>
-  </div>
-  <div class="mtp-box fade-in">
-    <div class="mtp-badge">MTP</div>
-    <div class="mtp-text">
-      <strong>Propósito Transformador Masivo</strong>
-      <span>Todo comienza aquí: una aspiración audaz que da sentido y atrae talento, capital y comunidad. Va mucho más allá del negocio.</span>
+  <!-- ── SLIDE 1 ── -->
+  <section class="slide" id="s1">
+    <div class="slide-label">Paso 1 — Marco conceptual</div>
+    <h2 class="slide-title">¿Qué es una <em>Organización Exponencial</em>?</h2>
+    <div class="exo-def fade-in">
+      <p>Una <strong>Organización Exponencial (ExO)</strong> es aquella cuyo impacto — o resultado — es
+        desproporcionadamente grande en comparación con sus pares, gracias al uso de nuevas técnicas organizacionales
+        que aprovechan tecnologías aceleradas. Su crecimiento supera en <strong>10 veces o más</strong> al de
+        organizaciones similares.</p>
+      <cite>— Salim Ismail, "Exponential Organizations" (2014)</cite>
     </div>
-  </div>
-  <div class="attrs-grid fade-in">
-    <div class="attr-card">
-      <div class="attr-letter s">S</div>
-      <div class="attr-name">Staff on demand</div>
-      <div class="attr-desc">Talento externo activado cuando se necesita</div>
+    <div class="mtp-box fade-in">
+      <div class="mtp-badge">MTP</div>
+      <div class="mtp-text">
+        <strong>Propósito Transformador Masivo</strong>
+        <span>Todo comienza aquí: una aspiración audaz que da sentido y atrae talento, capital y comunidad. Va mucho más
+          allá del negocio.</span>
+      </div>
     </div>
-    <div class="attr-card">
-      <div class="attr-letter s">C</div>
-      <div class="attr-name">Community & crowd</div>
-      <div class="attr-desc">Comunidad que co-crea e impulsa</div>
+    <div class="attrs-grid fade-in">
+      <div class="attr-card">
+        <div class="attr-letter s">S</div>
+        <div class="attr-name">Staff on demand</div>
+        <div class="attr-desc">Talento externo activado cuando se necesita</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter s">C</div>
+        <div class="attr-name">Community & crowd</div>
+        <div class="attr-desc">Comunidad que co-crea e impulsa</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter s">A</div>
+        <div class="attr-name">Algorithms</div>
+        <div class="attr-desc">IA y ML para decisiones automáticas</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter s">L</div>
+        <div class="attr-name">Leveraged assets</div>
+        <div class="attr-desc">Activos compartidos, no propios</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter s">E</div>
+        <div class="attr-name">Engagement</div>
+        <div class="attr-desc">Gamificación, incentivos, loops virales</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter i">I</div>
+        <div class="attr-name">Interfaces</div>
+        <div class="attr-desc">APIs y procesos automáticos hacia el exterior</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter i">D</div>
+        <div class="attr-name">Dashboards</div>
+        <div class="attr-desc">OKRs, KPIs en tiempo real para todos</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter i">E</div>
+        <div class="attr-name">Experimentation</div>
+        <div class="attr-desc">Cultura de prueba y error rápida</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter i">A</div>
+        <div class="attr-name">Autonomy</div>
+        <div class="attr-desc">Equipos auto-gestionados, sin burocracia</div>
+      </div>
+      <div class="attr-card">
+        <div class="attr-letter i">S</div>
+        <div class="attr-name">Social tech</div>
+        <div class="attr-desc">Herramientas colaborativas y transparencia</div>
+      </div>
     </div>
-    <div class="attr-card">
-      <div class="attr-letter s">A</div>
-      <div class="attr-name">Algorithms</div>
-      <div class="attr-desc">IA y ML para decisiones automáticas</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter s">L</div>
-      <div class="attr-name">Leveraged assets</div>
-      <div class="attr-desc">Activos compartidos, no propios</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter s">E</div>
-      <div class="attr-name">Engagement</div>
-      <div class="attr-desc">Gamificación, incentivos, loops virales</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter i">I</div>
-      <div class="attr-name">Interfaces</div>
-      <div class="attr-desc">APIs y procesos automáticos hacia el exterior</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter i">D</div>
-      <div class="attr-name">Dashboards</div>
-      <div class="attr-desc">OKRs, KPIs en tiempo real para todos</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter i">E</div>
-      <div class="attr-name">Experimentation</div>
-      <div class="attr-desc">Cultura de prueba y error rápida</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter i">A</div>
-      <div class="attr-name">Autonomy</div>
-      <div class="attr-desc">Equipos auto-gestionados, sin burocracia</div>
-    </div>
-    <div class="attr-card">
-      <div class="attr-letter i">S</div>
-      <div class="attr-name">Social tech</div>
-      <div class="attr-desc">Herramientas colaborativas y transparencia</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── SLIDE 2 ── -->
-<section class="slide" id="s2">
-  <div class="slide-label">Paso 2 — La empresa elegida</div>
-  <h2 class="slide-title">Alegra: un ecosistema<br>nacido en <em>Medellín</em></h2>
-  <div class="numbers-grid fade-in">
-    <div class="num-card c1"><div class="num-big">2012</div><div class="num-label">Año de fundación en Medellín, Colombia</div><div class="num-source">Fuente: hubspot.es/case-studies/alegra</div></div>
-    <div class="num-card c2"><div class="num-big">476k+</div><div class="num-label">Empresas registradas en todos sus mercados (2021)</div><div class="num-source">Fuente: hubspot.es/case-studies/alegra</div></div>
-    <div class="num-card c3"><div class="num-big">+80%</div><div class="num-label">Tasa de crecimiento anual sostenida desde el inicio</div><div class="num-source">Fuente: prensa.alegra.com</div></div>
-    <div class="num-card c4"><div class="num-big">14</div><div class="num-label">Países con presencia activa en LATAM, España y África</div><div class="num-source">Fuente: hubspot.es/case-studies/alegra</div></div>
-    <div class="num-card c5"><div class="num-big">40+</div><div class="num-label">Integraciones verificadas vía API pública (Shopify, ML...)</div><div class="num-source">Fuente: programascontabilidad.com</div></div>
-    <div class="num-card c6"><div class="num-big">10 min</div><div class="num-label">Tiempo para habilitarse como facturador electrónico DIAN</div><div class="num-source">Fuente: alegra.com/colombia/facturacion-electronica</div></div>
-  </div>
-  <div style="margin-top:20px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px" class="fade-in">
-    <p style="font-size:14px;line-height:1.7;color:var(--muted)">Alegra es un <strong style="color:var(--text)">ecosistema SaaS 100% en la nube</strong> que integra facturación electrónica, contabilidad, nómina electrónica y punto de venta (POS) en una sola plataforma. Su MTP declarado: <strong style="color:var(--accent2)">"Simplificar la gestión administrativa de las pymes latinoamericanas"</strong>. Fundada por <strong style="color:var(--text)">Santiago Villegas y Jorge Soto</strong>.</p>
-  </div>
-</section>
+  <!-- ── SLIDE 2 ── -->
+  <section class="slide" id="s2">
+    <div class="slide-label">Paso 2 — La empresa elegida</div>
+    <h2 class="slide-title">Alegra: un ecosistema<br>nacido en <em>Medellín</em></h2>
+    <div class="numbers-grid fade-in">
+      <div class="num-card c1">
+        <div class="num-big">2012</div>
+        <div class="num-label">Año de fundación en Medellín, Colombia</div>
+        <div class="num-source">Fuente: hubspot.es/case-studies/alegra</div>
+      </div>
+      <div class="num-card c2">
+        <div class="num-big">476k+</div>
+        <div class="num-label">Empresas registradas en todos sus mercados (2021)</div>
+        <div class="num-source">Fuente: hubspot.es/case-studies/alegra</div>
+      </div>
+      <div class="num-card c3">
+        <div class="num-big">+80%</div>
+        <div class="num-label">Tasa de crecimiento anual sostenida desde el inicio</div>
+        <div class="num-source">Fuente: prensa.alegra.com</div>
+      </div>
+      <div class="num-card c4">
+        <div class="num-big">14</div>
+        <div class="num-label">Países con presencia activa en LATAM, España y África</div>
+        <div class="num-source">Fuente: hubspot.es/case-studies/alegra</div>
+      </div>
+      <div class="num-card c5">
+        <div class="num-big">40+</div>
+        <div class="num-label">Integraciones verificadas vía API pública (Shopify, ML...)</div>
+        <div class="num-source">Fuente: programascontabilidad.com</div>
+      </div>
+      <div class="num-card c6">
+        <div class="num-big">10 min</div>
+        <div class="num-label">Tiempo para habilitarse como facturador electrónico DIAN</div>
+        <div class="num-source">Fuente: alegra.com/colombia/facturacion-electronica</div>
+      </div>
+    </div>
+    <div
+      style="margin-top:20px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 24px"
+      class="fade-in">
+      <p style="font-size:14px;line-height:1.7;color:var(--muted)">Alegra es un <strong
+          style="color:var(--text)">ecosistema SaaS 100% en la nube</strong> que integra facturación electrónica,
+        contabilidad, nómina electrónica y punto de venta (POS) en una sola plataforma. Su MTP declarado: <strong
+          style="color:var(--accent2)">"Simplificar la gestión administrativa de las pymes latinoamericanas"</strong>.
+        Fundada por <strong style="color:var(--text)">Santiago Villegas y Jorge Soto</strong>.</p>
+    </div>
+  </section>
 
-<!-- ── SLIDE 3 ── -->
-<section class="slide" id="s3">
-  <div class="slide-label">Paso 2 — Evaluación directiva</div>
-  <h2 class="slide-title">Las <em>9 preguntas</em><br>clave (haz clic para expandir)</h2>
-  <div class="questions-layout fade-in">
+  <!-- ── SLIDE 3 ── -->
+  <section class="slide" id="s3">
+    <div class="slide-label">Paso 2 — Evaluación directiva</div>
+    <h2 class="slide-title">Las <em>9 preguntas</em><br>clave (haz clic para expandir)</h2>
+    <div class="questions-layout fade-in">
 
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">01</div>
-      <div class="q-body">
-        <div class="q-title">¿Cómo está transformando el mercado?</div>
-        <div class="q-answer">Desplazó el software instalado por un ecosistema cloud accesible desde $69.900 COP/mes. Democratizó herramientas empresariales para pymes. Más de 476k empresas registradas y habilitación DIAN en 10 minutos.
-          <div><span class="verdict v-yes">✓ Transformación clara</span></div>
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">01</div>
+        <div class="q-body">
+          <div class="q-title">¿Cómo está transformando el mercado?</div>
+          <div class="q-answer">Desplazó el software instalado por un ecosistema cloud accesible desde $69.900 COP/mes.
+            Democratizó herramientas empresariales para pymes. Más de 476k empresas registradas y habilitación DIAN en
+            10 minutos.
+            <div><span class="verdict v-yes">✓ Transformación clara</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">02</div>
+        <div class="q-body">
+          <div class="q-title">¿Cómo involucra actores externos?</div>
+          <div class="q-answer">Contadores como socios de adopción (usuario gratis en planes), marketplace con 40+
+            integraciones, portal colaborativo cliente-contador, plan gratuito para fundaciones, alianza ambiental con
+            InverBosques.
+            <div><span class="verdict v-partial">◑ En desarrollo</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">03</div>
+        <div class="q-body">
+          <div class="q-title">¿Cómo ejecuta procesos digitalmente?</div>
+          <div class="q-answer">Todo el core es nativo cloud: facturación, contabilidad, POS, nómina y soporte 24/7. App
+            móvil con facturación por voz y WhatsApp. Actualizaciones normativas automáticas para todos los clientes sin
+            intervención.
+            <div><span class="verdict v-yes">✓ Totalmente digital</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">04</div>
+        <div class="q-body">
+          <div class="q-title">¿Cómo usa la inteligencia artificial?</div>
+          <div class="q-answer">IA en asientos contables automáticos, conciliación bancaria cruzada, sincronización con
+            DIAN, buzón inteligente que aprende hábitos, reportes predictivos, facturación por voz y conciliador fiscal
+            en segundos.
+            <div><span class="verdict v-yes">✓ IA integrada transversalmente</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">05</div>
+        <div class="q-body">
+          <div class="q-title">¿Cómo es su modelo de negocio digital?</div>
+          <div class="q-answer">SaaS puro con precios escalonados por rango de ingresos del cliente. Sin instalación,
+            sin permanencia, prueba gratis 15 días. Multipaís con el mismo motor tecnológico adaptado localmente.
+            Marketplace de integraciones como extensión.
+            <div><span class="verdict v-yes">✓ SaaS escalable</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">06</div>
+        <div class="q-body">
+          <div class="q-title">¿Puede crecer sin inflar costos?</div>
+          <div class="q-answer">Sí. Cada cliente adicional tiene costo marginal casi cero. Las actualizaciones
+            normativas se despliegan una vez para todos. La IA reduce carga de soporte. Multipaís sin duplicar
+            infraestructura. Crecimiento asimétrico documentado.
+            <div><span class="verdict v-yes">✓ Escalabilidad asimétrica</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">07</div>
+        <div class="q-body">
+          <div class="q-title">¿Monitorea procesos en tiempo real?</div>
+          <div class="q-answer">Tableros de ventas, inventario y flujo de caja en tiempo real. Conciliación bancaria
+            continua. Estado de cada factura ante la DIAN visible al instante. Alertas proactivas de cumplimiento
+            tributario. Acceso multi-dispositivo.
+            <div><span class="verdict v-yes">✓ Monitoreo en tiempo real</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">08</div>
+        <div class="q-body">
+          <div class="q-title">¿Experimenta con nuevos productos?</div>
+          <div class="q-answer">En 2024 lanzaron: reportes inteligentes, gestión de roles, buzón IA, facturación por
+            voz/WhatsApp y conciliador fiscal. Actualizan normas automáticamente. Blog de novedades activo. Prueba
+            gratuita de 15 días como mecanismo de validación de mercado.
+            <div><span class="verdict v-yes">✓ Experimentación continua</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+      <div class="q-card" onclick="toggleQ(this)">
+        <div class="q-num">09</div>
+        <div class="q-body">
+          <div class="q-title">¿Promueve trabajo colaborativo?</div>
+          <div class="q-answer">Multi-usuario con roles diferenciados, usuario gratis para contador en planes
+            medios-altos, portal colaborativo, Espacio Contador para despachos. Internamente: cultura declarada de
+            diversidad e inclusión, equipos distribuidos en 14+ países.
+            <div><span class="verdict v-partial">◑ Parcialmente</span></div>
+          </div>
+        </div>
+        <span class="q-chevron">▾</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SLIDE 4 ── -->
+  <section class="slide" id="s4">
+    <div class="slide-label">Paso 3 — Análisis ExO</div>
+    <h2 class="slide-title">¿Tiene Alegra el ADN<br>de una <em>organización exponencial</em>?</h2>
+    <div class="diag-layout fade-in">
+      <div class="scale-block">
+        <div class="block-title">SCALE — palancas externas</div>
+        <div class="attr-row">
+          <div class="attr-tag">S</div>
+          <div class="attr-info"><strong>Staff on demand</strong><span>Soporte 24/7 distribuido</span></div>
+          <div class="status-dot dot-partial"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">C</div>
+          <div class="attr-info"><strong>Community & crowd</strong><span>Marketplace + contadores</span></div>
+          <div class="status-dot dot-partial"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">A</div>
+          <div class="attr-info"><strong>Algorithms</strong><span>IA en toda la plataforma</span></div>
+          <div class="status-dot dot-yes"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">L</div>
+          <div class="attr-info"><strong>Leveraged assets</strong><span>Infraestructura cloud</span></div>
+          <div class="status-dot dot-yes"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">E</div>
+          <div class="attr-info"><strong>Engagement</strong><span>Sin gamificación activa</span></div>
+          <div class="status-dot dot-no"></div>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">02</div>
-      <div class="q-body">
-        <div class="q-title">¿Cómo involucra actores externos?</div>
-        <div class="q-answer">Contadores como socios de adopción (usuario gratis en planes), marketplace con 40+ integraciones, portal colaborativo cliente-contador, plan gratuito para fundaciones, alianza ambiental con InverBosques.
-          <div><span class="verdict v-partial">◑ En desarrollo</span></div>
+      <div class="ideas-block">
+        <div class="block-title">IDEAS — palancas internas</div>
+        <div class="attr-row">
+          <div class="attr-tag">I</div>
+          <div class="attr-info"><strong>Interfaces</strong><span>API pública, 40+ integraciones</span></div>
+          <div class="status-dot dot-yes"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">D</div>
+          <div class="attr-info"><strong>Dashboards</strong><span>Reportes en tiempo real</span></div>
+          <div class="status-dot dot-yes"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">E</div>
+          <div class="attr-info"><strong>Experimentation</strong><span>Lanzamientos frecuentes</span></div>
+          <div class="status-dot dot-yes"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">A</div>
+          <div class="attr-info"><strong>Autonomy</strong><span>Estructura funcional aún</span></div>
+          <div class="status-dot dot-no"></div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-tag">S</div>
+          <div class="attr-info"><strong>Social tech</strong><span>Colaboración digital presente</span></div>
+          <div class="status-dot dot-partial"></div>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">03</div>
-      <div class="q-body">
-        <div class="q-title">¿Cómo ejecuta procesos digitalmente?</div>
-        <div class="q-answer">Todo el core es nativo cloud: facturación, contabilidad, POS, nómina y soporte 24/7. App móvil con facturación por voz y WhatsApp. Actualizaciones normativas automáticas para todos los clientes sin intervención.
-          <div><span class="verdict v-yes">✓ Totalmente digital</span></div>
+      <div class="verdict-box">
+        <div class="verdict-title">Veredicto: <span>Sí tiene potencial ExO</span> — con brechas accionables</div>
+        <div class="verdict-sub">Alegra cumple 5 de 10 atributos ExO de forma sólida (Algorithms, Leveraged assets,
+          Interfaces, Dashboards, Experimentation) y tiene 3 en desarrollo. Las brechas principales son
+          <strong>Engagement</strong> (gamificación), <strong>Community</strong> activa y <strong>Autonomy</strong>
+          interna. Su modelo SaaS multipaís y su base de 476k+ empresas son la plataforma perfecta para un salto
+          exponencial. Le faltan estructura organizacional ágil y monetización de datos y comunidad.
+        </div>
+        <div style="margin-top:14px;display:flex;gap:16px">
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span class="status-dot dot-yes"
+              style="display:inline-block"></span> Presente (5)</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span class="status-dot dot-partial"
+              style="display:inline-block"></span> En desarrollo (3)</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span class="status-dot dot-no"
+              style="display:inline-block"></span> Brecha (2)</div>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
     </div>
+  </section>
 
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">04</div>
-      <div class="q-body">
-        <div class="q-title">¿Cómo usa la inteligencia artificial?</div>
-        <div class="q-answer">IA en asientos contables automáticos, conciliación bancaria cruzada, sincronización con DIAN, buzón inteligente que aprende hábitos, reportes predictivos, facturación por voz y conciliador fiscal en segundos.
-          <div><span class="verdict v-yes">✓ IA integrada transversalmente</span></div>
+  <!-- ── SLIDE 5 ── -->
+  <section class="slide" id="s5">
+    <div class="slide-label">Propuesta ExO — 10x</div>
+    <h2 class="slide-title">Hoja de ruta para el<br>crecimiento <em>exponencial</em></h2>
+    <div class="roadmap fade-in">
+      <div class="road-item">
+        <div class="road-num">1</div>
+        <div class="road-card">
+          <div class="road-tag">Community & Engagement</div>
+          <div class="road-title">Red de Contadores Certificados Alegra</div>
+          <div class="road-desc">Crear un programa de certificación con badges digitales, acceso preferencial al
+            marketplace y comisiones por referidos. Los contadores se convierten en fuerza de ventas y co-creadores del
+            producto.</div>
+          <div class="road-ref">Referente: Salesforce Trailhead · AppExchange</div>
+          <span class="impact-pill imp-high">Impacto muy alto · Costo bajo</span>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">05</div>
-      <div class="q-body">
-        <div class="q-title">¿Cómo es su modelo de negocio digital?</div>
-        <div class="q-answer">SaaS puro con precios escalonados por rango de ingresos del cliente. Sin instalación, sin permanencia, prueba gratis 15 días. Multipaís con el mismo motor tecnológico adaptado localmente. Marketplace de integraciones como extensión.
-          <div><span class="verdict v-yes">✓ SaaS escalable</span></div>
+      <div class="road-item">
+        <div class="road-num">2</div>
+        <div class="road-card">
+          <div class="road-tag">Leveraged Assets · Algorithms</div>
+          <div class="road-title">Datos como producto: benchmarks e inteligencia sectorial</div>
+          <div class="road-desc">Monetizar datos anonimizados de 476k+ empresas: benchmarks financieros por sector,
+            scoring fiscal para bancos y reportes macro para gobierno. Nuevo flujo de ingresos con costo marginal cero.
+          </div>
+          <div class="road-ref">Referente: QuickBooks Insights · Bloomberg sector data</div>
+          <span class="impact-pill imp-high">Impacto muy alto · Sin cliente incremental</span>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">06</div>
-      <div class="q-body">
-        <div class="q-title">¿Puede crecer sin inflar costos?</div>
-        <div class="q-answer">Sí. Cada cliente adicional tiene costo marginal casi cero. Las actualizaciones normativas se despliegan una vez para todos. La IA reduce carga de soporte. Multipaís sin duplicar infraestructura. Crecimiento asimétrico documentado.
-          <div><span class="verdict v-yes">✓ Escalabilidad asimétrica</span></div>
+      <div class="road-item">
+        <div class="road-num">3</div>
+        <div class="road-card">
+          <div class="road-tag">Autonomy · Staff on demand</div>
+          <div class="road-title">Migrar a squads autónomos por segmento</div>
+          <div class="road-desc">Reemplazar jerarquía funcional por tribus: Pymes nano, Pymes medianas, Contadores,
+            Enterprise. Cada squad con autonomía de producto, datos y P&L propio. Decisiones 5x más rápidas.</div>
+          <div class="road-ref">Referente: Spotify model · ING Bank</div>
+          <span class="impact-pill imp-med">Habilitador estructural</span>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">07</div>
-      <div class="q-body">
-        <div class="q-title">¿Monitorea procesos en tiempo real?</div>
-        <div class="q-answer">Tableros de ventas, inventario y flujo de caja en tiempo real. Conciliación bancaria continua. Estado de cada factura ante la DIAN visible al instante. Alertas proactivas de cumplimiento tributario. Acceso multi-dispositivo.
-          <div><span class="verdict v-yes">✓ Monitoreo en tiempo real</span></div>
+      <div class="road-item">
+        <div class="road-num">4</div>
+        <div class="road-card">
+          <div class="road-tag">Interfaces · Community</div>
+          <div class="road-title">AppStore de Alegra: plataforma de desarrolladores</div>
+          <div class="road-desc">Abrir un ecosistema donde terceros construyan módulos especializados (nómina sectorial,
+            facturación médica, POS para restaurantes). Alegra captura % por transacción sin desarrollar los módulos.
+          </div>
+          <div class="road-ref">Referente: Shopify App Store · Xero Marketplace</div>
+          <span class="impact-pill imp-high">Efecto de red compuesto</span>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">08</div>
-      <div class="q-body">
-        <div class="q-title">¿Experimenta con nuevos productos?</div>
-        <div class="q-answer">En 2024 lanzaron: reportes inteligentes, gestión de roles, buzón IA, facturación por voz/WhatsApp y conciliador fiscal. Actualizan normas automáticamente. Blog de novedades activo. Prueba gratuita de 15 días como mecanismo de validación de mercado.
-          <div><span class="verdict v-yes">✓ Experimentación continua</span></div>
+      <div class="road-item">
+        <div class="road-num">5</div>
+        <div class="road-card">
+          <div class="road-tag">Algorithms · Leveraged Assets</div>
+          <div class="road-title">Crédito y servicios financieros embebidos</div>
+          <div class="road-desc">Con el historial de flujo de caja de cada cliente, ofrecer capital de trabajo,
+            factoring y financiación embebida en alianza con Bancolombia o Nequi. De software contable a plataforma
+            financiera.</div>
+          <div class="road-ref">Referente: Shopify Capital · QuickBooks Capital</div>
+          <span class="impact-pill imp-high">Mayor ARPU por cliente</span>
         </div>
       </div>
-      <span class="q-chevron">▾</span>
     </div>
+  </section>
 
-    <div class="q-card" onclick="toggleQ(this)">
-      <div class="q-num">09</div>
-      <div class="q-body">
-        <div class="q-title">¿Promueve trabajo colaborativo?</div>
-        <div class="q-answer">Multi-usuario con roles diferenciados, usuario gratis para contador en planes medios-altos, portal colaborativo, Espacio Contador para despachos. Internamente: cultura declarada de diversidad e inclusión, equipos distribuidos en 14+ países.
-          <div><span class="verdict v-partial">◑ Parcialmente</span></div>
-        </div>
+  <!-- ── SLIDE 6 — FUENTES ── -->
+  <section class="slide" id="s6">
+    <div class="slide-label">Transparencia académica</div>
+    <h2 class="slide-title">Fuentes de <em>información</em></h2>
+    <div class="legend fade-in">
+      <div class="leg-item">
+        <div class="leg-dot" style="background:var(--accent2)"></div>Fuentes oficiales Alegra
       </div>
-      <span class="q-chevron">▾</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── SLIDE 4 ── -->
-<section class="slide" id="s4">
-  <div class="slide-label">Paso 3 — Análisis ExO</div>
-  <h2 class="slide-title">¿Tiene Alegra el ADN<br>de una <em>organización exponencial</em>?</h2>
-  <div class="diag-layout fade-in">
-    <div class="scale-block">
-      <div class="block-title">SCALE — palancas externas</div>
-      <div class="attr-row"><div class="attr-tag">S</div><div class="attr-info"><strong>Staff on demand</strong><span>Soporte 24/7 distribuido</span></div><div class="status-dot dot-partial"></div></div>
-      <div class="attr-row"><div class="attr-tag">C</div><div class="attr-info"><strong>Community & crowd</strong><span>Marketplace + contadores</span></div><div class="status-dot dot-partial"></div></div>
-      <div class="attr-row"><div class="attr-tag">A</div><div class="attr-info"><strong>Algorithms</strong><span>IA en toda la plataforma</span></div><div class="status-dot dot-yes"></div></div>
-      <div class="attr-row"><div class="attr-tag">L</div><div class="attr-info"><strong>Leveraged assets</strong><span>Infraestructura cloud</span></div><div class="status-dot dot-yes"></div></div>
-      <div class="attr-row"><div class="attr-tag">E</div><div class="attr-info"><strong>Engagement</strong><span>Sin gamificación activa</span></div><div class="status-dot dot-no"></div></div>
-    </div>
-    <div class="ideas-block">
-      <div class="block-title">IDEAS — palancas internas</div>
-      <div class="attr-row"><div class="attr-tag">I</div><div class="attr-info"><strong>Interfaces</strong><span>API pública, 40+ integraciones</span></div><div class="status-dot dot-yes"></div></div>
-      <div class="attr-row"><div class="attr-tag">D</div><div class="attr-info"><strong>Dashboards</strong><span>Reportes en tiempo real</span></div><div class="status-dot dot-yes"></div></div>
-      <div class="attr-row"><div class="attr-tag">E</div><div class="attr-info"><strong>Experimentation</strong><span>Lanzamientos frecuentes</span></div><div class="status-dot dot-yes"></div></div>
-      <div class="attr-row"><div class="attr-tag">A</div><div class="attr-info"><strong>Autonomy</strong><span>Estructura funcional aún</span></div><div class="status-dot dot-no"></div></div>
-      <div class="attr-row"><div class="attr-tag">S</div><div class="attr-info"><strong>Social tech</strong><span>Colaboración digital presente</span></div><div class="status-dot dot-partial"></div></div>
-    </div>
-    <div class="verdict-box">
-      <div class="verdict-title">Veredicto: <span>Sí tiene potencial ExO</span> — con brechas accionables</div>
-      <div class="verdict-sub">Alegra cumple 5 de 10 atributos ExO de forma sólida (Algorithms, Leveraged assets, Interfaces, Dashboards, Experimentation) y tiene 3 en desarrollo. Las brechas principales son <strong>Engagement</strong> (gamificación), <strong>Community</strong> activa y <strong>Autonomy</strong> interna. Su modelo SaaS multipaís y su base de 476k+ empresas son la plataforma perfecta para un salto exponencial. Le faltan estructura organizacional ágil y monetización de datos y comunidad.</div>
-      <div style="margin-top:14px;display:flex;gap:16px">
-        <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span class="status-dot dot-yes" style="display:inline-block"></span> Presente (5)</div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span class="status-dot dot-partial" style="display:inline-block"></span> En desarrollo (3)</div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:12px"><span class="status-dot dot-no" style="display:inline-block"></span> Brecha (2)</div>
+      <div class="leg-item">
+        <div class="leg-dot" style="background:var(--accent3)"></div>Fuentes de terceros verificadas
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ── SLIDE 5 ── -->
-<section class="slide" id="s5">
-  <div class="slide-label">Propuesta ExO — 10x</div>
-  <h2 class="slide-title">Hoja de ruta para el<br>crecimiento <em>exponencial</em></h2>
-  <div class="roadmap fade-in">
-    <div class="road-item">
-      <div class="road-num">1</div>
-      <div class="road-card">
-        <div class="road-tag">Community & Engagement</div>
-        <div class="road-title">Red de Contadores Certificados Alegra</div>
-        <div class="road-desc">Crear un programa de certificación con badges digitales, acceso preferencial al marketplace y comisiones por referidos. Los contadores se convierten en fuerza de ventas y co-creadores del producto.</div>
-        <div class="road-ref">Referente: Salesforce Trailhead · AppExchange</div>
-        <span class="impact-pill imp-high">Impacto muy alto · Costo bajo</span>
+    <div class="sources-grid fade-in">
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>alegra.com/colombia/</strong><span>Página principal Colombia — módulos,
+            funcionalidades y propuesta de valor</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>alegra.com/colombia/contabilidad/precios/</strong><span>Planes y precios
+            actualizados del módulo de contabilidad</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>alegra.com/colombia/facturacion-electronica/</strong><span>Módulo de
+            facturación y proceso de habilitación DIAN</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>alegra.com/colombia/nomina-electronica/</strong><span>Nómina electrónica y
+            cumplimiento normativo</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>alegra.com/quienes-somos/</strong><span>Historia, fundadores y valores
+            corporativos</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>novedades.alegra.com</strong><span>Blog de lanzamientos de funcionalidades y
+            actualizaciones</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot oficial"></div>
+        <div class="source-info"><strong>prensa.alegra.com</strong><span>Nota de expansión global y proyecciones de
+            crecimiento (2020)</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot tercero"></div>
+        <div class="source-info"><strong>hubspot.es/case-studies/alegra</strong><span>Caso de estudio: datos de usuarios
+            registrados y crecimiento histórico</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot tercero"></div>
+        <div class="source-info"><strong>programascontabilidad.com</strong><span>Comparativa Alegra vs Siigo (marzo
+            2026) — integraciones y posicionamiento</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot tercero"></div>
+        <div class="source-info"><strong>capterra.mx</strong><span>Reseñas de usuarios y descripción de funcionalidades
+            por terceros</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot tercero"></div>
+        <div class="source-info"><strong>apps.apple.com</strong><span>App móvil: funcionalidades declaradas y reseñas de
+            usuarios reales</span></div>
+      </div>
+      <div class="source-item">
+        <div class="source-dot tercero"></div>
+        <div class="source-info"><strong>siemprealdia.co</strong><span>Contexto normativo DIAN, facturación electrónica
+            y exógena 2025</span></div>
       </div>
     </div>
-    <div class="road-item">
-      <div class="road-num">2</div>
-      <div class="road-card">
-        <div class="road-tag">Leveraged Assets · Algorithms</div>
-        <div class="road-title">Datos como producto: benchmarks e inteligencia sectorial</div>
-        <div class="road-desc">Monetizar datos anonimizados de 476k+ empresas: benchmarks financieros por sector, scoring fiscal para bancos y reportes macro para gobierno. Nuevo flujo de ingresos con costo marginal cero.</div>
-        <div class="road-ref">Referente: QuickBooks Insights · Bloomberg sector data</div>
-        <span class="impact-pill imp-high">Impacto muy alto · Sin cliente incremental</span>
-      </div>
-    </div>
-    <div class="road-item">
-      <div class="road-num">3</div>
-      <div class="road-card">
-        <div class="road-tag">Autonomy · Staff on demand</div>
-        <div class="road-title">Migrar a squads autónomos por segmento</div>
-        <div class="road-desc">Reemplazar jerarquía funcional por tribus: Pymes nano, Pymes medianas, Contadores, Enterprise. Cada squad con autonomía de producto, datos y P&L propio. Decisiones 5x más rápidas.</div>
-        <div class="road-ref">Referente: Spotify model · ING Bank</div>
-        <span class="impact-pill imp-med">Habilitador estructural</span>
-      </div>
-    </div>
-    <div class="road-item">
-      <div class="road-num">4</div>
-      <div class="road-card">
-        <div class="road-tag">Interfaces · Community</div>
-        <div class="road-title">AppStore de Alegra: plataforma de desarrolladores</div>
-        <div class="road-desc">Abrir un ecosistema donde terceros construyan módulos especializados (nómina sectorial, facturación médica, POS para restaurantes). Alegra captura % por transacción sin desarrollar los módulos.</div>
-        <div class="road-ref">Referente: Shopify App Store · Xero Marketplace</div>
-        <span class="impact-pill imp-high">Efecto de red compuesto</span>
-      </div>
-    </div>
-    <div class="road-item">
-      <div class="road-num">5</div>
-      <div class="road-card">
-        <div class="road-tag">Algorithms · Leveraged Assets</div>
-        <div class="road-title">Crédito y servicios financieros embebidos</div>
-        <div class="road-desc">Con el historial de flujo de caja de cada cliente, ofrecer capital de trabajo, factoring y financiación embebida en alianza con Bancolombia o Nequi. De software contable a plataforma financiera.</div>
-        <div class="road-ref">Referente: Shopify Capital · QuickBooks Capital</div>
-        <span class="impact-pill imp-high">Mayor ARPU por cliente</span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ── SLIDE 6 — FUENTES ── -->
-<section class="slide" id="s6">
-  <div class="slide-label">Transparencia académica</div>
-  <h2 class="slide-title">Fuentes de <em>información</em></h2>
-  <div class="legend fade-in">
-    <div class="leg-item"><div class="leg-dot" style="background:var(--accent2)"></div>Fuentes oficiales Alegra</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--accent3)"></div>Fuentes de terceros verificadas</div>
-  </div>
-  <div class="sources-grid fade-in">
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>alegra.com/colombia/</strong><span>Página principal Colombia — módulos, funcionalidades y propuesta de valor</span></div></div>
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>alegra.com/colombia/contabilidad/precios/</strong><span>Planes y precios actualizados del módulo de contabilidad</span></div></div>
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>alegra.com/colombia/facturacion-electronica/</strong><span>Módulo de facturación y proceso de habilitación DIAN</span></div></div>
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>alegra.com/colombia/nomina-electronica/</strong><span>Nómina electrónica y cumplimiento normativo</span></div></div>
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>alegra.com/quienes-somos/</strong><span>Historia, fundadores y valores corporativos</span></div></div>
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>novedades.alegra.com</strong><span>Blog de lanzamientos de funcionalidades y actualizaciones</span></div></div>
-    <div class="source-item"><div class="source-dot oficial"></div><div class="source-info"><strong>prensa.alegra.com</strong><span>Nota de expansión global y proyecciones de crecimiento (2020)</span></div></div>
-    <div class="source-item"><div class="source-dot tercero"></div><div class="source-info"><strong>hubspot.es/case-studies/alegra</strong><span>Caso de estudio: datos de usuarios registrados y crecimiento histórico</span></div></div>
-    <div class="source-item"><div class="source-dot tercero"></div><div class="source-info"><strong>programascontabilidad.com</strong><span>Comparativa Alegra vs Siigo (marzo 2026) — integraciones y posicionamiento</span></div></div>
-    <div class="source-item"><div class="source-dot tercero"></div><div class="source-info"><strong>capterra.mx</strong><span>Reseñas de usuarios y descripción de funcionalidades por terceros</span></div></div>
-    <div class="source-item"><div class="source-dot tercero"></div><div class="source-info"><strong>apps.apple.com</strong><span>App móvil: funcionalidades declaradas y reseñas de usuarios reales</span></div></div>
-    <div class="source-item"><div class="source-dot tercero"></div><div class="source-info"><strong>siemprealdia.co</strong><span>Contexto normativo DIAN, facturación electrónica y exógena 2025</span></div></div>
-  </div>
-</section>
+  <script>
+    function scrollTo(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }) }
 
-<script>
-function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-
-function toggleQ(card){
-  const wasOpen=card.classList.contains('open');
-  document.querySelectorAll('.q-card').forEach(c=>c.classList.remove('open'));
-  if(!wasOpen)card.classList.add('open');
-}
-
-// Progress bar
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  const pct=(window.scrollY/(h.scrollHeight-h.clientHeight))*100;
-  document.getElementById('progress').style.width=pct+'%';
-  // Nav active state
-  const slides=['s0','s1','s2','s3','s4','s5'];
-  const pills=document.querySelectorAll('.nav-pill');
-  slides.forEach((id,i)=>{
-    const el=document.getElementById(id);
-    if(!el)return;
-    const rect=el.getBoundingClientRect();
-    if(rect.top<=80&&rect.bottom>80){
-      pills.forEach(p=>p.classList.remove('active'));
-      if(pills[i])pills[i].classList.add('active');
+    function toggleQ(card) {
+      const wasOpen = card.classList.contains('open');
+      document.querySelectorAll('.q-card').forEach(c => c.classList.remove('open'));
+      if (!wasOpen) card.classList.add('open');
     }
-  });
-});
 
-// Intersection observer for fade-in
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.1});
-document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
-</script>
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+      // Nav active state
+      const slides = ['s0', 's1', 's2', 's3', 's4', 's5'];
+      const pills = document.querySelectorAll('.nav-pill');
+      slides.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom > 80) {
+          pills.forEach(p => p.classList.remove('active'));
+          if (pills[i]) pills[i].classList.add('active');
+        }
+      });
+    });
+
+    // Intersection observer for fade-in
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
+    }, { threshold: .1 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  </script>
 </body>
+
 </html>
